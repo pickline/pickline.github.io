@@ -1,0 +1,287 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程 | Pickline&#39;s Blog</title>
+<meta name="description" content="人生苦短" />
+<link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1576299546667">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://pickline.github.io">
+  <img class="avatar" src="https://pickline.github.io/images/avatar.png?v=1576299546667" alt="">
+  </a>
+  <h1 class="site-title">
+    Pickline&#39;s Blog
+  </h1>
+  <p class="site-description">
+    人生苦短
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程
+            </h2>
+            <div class="post-info">
+              <span>
+                2019-Jul-01
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://pickline.github.io/tag/fXw6iORj1" class="post-tag">
+                  # C/C++
+                </a>
+              
+                <a href="https://pickline.github.io/tag/K2Y-UnAo6r" class="post-tag">
+                  # WSL
+                </a>
+              
+                <a href="https://pickline.github.io/tag/mlCYpSJdMY" class="post-tag">
+                  # Windows
+                </a>
+              
+                <a href="https://pickline.github.io/tag/xDkjSFwzjZ" class="post-tag">
+                  # Visual Studio Code
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>由于个人原因更换了新电脑，然后需要在新电脑上配置开发环境，于是使用了Visual Studio Code + WSL来配置简便的Linux C/C++开发环境</p>
+<!-- more -->
+<h1 id="安装visual-studio-code">安装Visual Studio Code</h1>
+<p>这个过程非常简单，按照网上的教程一步步的进行即可。</p>
+<h1 id="visual-studio-code安装必要插件">Visual Studio Code安装必要插件</h1>
+<p>强烈推荐Microsoft官方开发的C/C++插件。<img src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" alt="C/C++插件"></p>
+<h1 id="安装wsllinux子系统">安装WSL(Linux子系统)</h1>
+<p>在Microsoft官方商店中搜索Linux，<img src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" alt="Microsoft商店搜索Linux">选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
+<h1 id="wsl安装必要的编译环境">WSL安装必要的编译环境</h1>
+<p>WSL默认只带了gcc编译器，因此想要配置C++编译环境的同学需要自行下载g++编译器以及gdb调试工具。关于这个可以查阅Microsoft官方文档，不再过多赘述。</p>
+<h1 id="visual-studio-code配置">Visual Studio Code配置</h1>
+<p>Visual Studio Code在settings.json中配置wsl为默认shell。<img src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" alt="Visual Studio Code配置wsl为默认shell"><br>
+接着配置C/C++插件，C/C++插件默认使用项目目录下的.vscode/c_cpp_properties.json文件作为配置文件。这里笔者只简单的使用了Microsoft官方提供的配置文件进行配置，文件如下：</p>
+<pre><code class="language-json">{
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Win32&quot;,
+            &quot;includePath&quot;: [
+                &quot;${workspaceFolder}/**&quot;
+            ],
+            &quot;defines&quot;: [
+                &quot;_DEBUG&quot;,
+                &quot;UNICODE&quot;,
+                &quot;_UNICODE&quot;
+            ],
+            &quot;compilerPath&quot;: &quot;/usr/bin/g++&quot;,
+            &quot;cStandard&quot;: &quot;c11&quot;,
+            &quot;cppStandard&quot;: &quot;c++17&quot;,
+            &quot;intelliSenseMode&quot;: &quot;gcc-x64&quot;,
+            &quot;browse&quot;: {
+                &quot;path&quot;: [
+                    &quot;${workspaceFolder}&quot;
+                ],
+                &quot;limitSymbolsToIncludedHeaders&quot;: true,
+                &quot;databaseFilename&quot;: &quot;&quot;
+            }
+        }
+    ],
+    &quot;version&quot;: 4
+}
+</code></pre>
+<p>为了能够在Visual Studio Code中直接使用快捷键快速构建项目，你可以配置.vscode/tasks.json文件配置一些自定义的task，这里贴出官方提供的配置文件：</p>
+<pre><code class="language-json">{
+     &quot;version&quot;: &quot;2.0.0&quot;,
+     &quot;windows&quot;: {
+         &quot;options&quot;: {
+             &quot;shell&quot;: {
+                 &quot;executable&quot;: &quot;c:\\windows\\sysnative\\bash.exe&quot;,
+                 &quot;args&quot;: [&quot;-c&quot;]
+             }
+         }
+     },
+     &quot;tasks&quot;: [
+         {
+             &quot;label&quot;: &quot;build hello world on WSL&quot;,
+             &quot;type&quot;: &quot;shell&quot;,
+             &quot;command&quot;: &quot;g++&quot;,
+             &quot;args&quot;: [
+                 &quot;-g&quot;,
+                 &quot;-o&quot;,
+                 &quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/helloworld.out&quot;,
+                 &quot;helloworld.cpp&quot;
+             ],
+             &quot;group&quot;: {
+                 &quot;kind&quot;: &quot;build&quot;,
+                 &quot;isDefault&quot;: true
+             }
+         }
+     ]
+ }
+</code></pre>
+<p>具体文件中各配置项含义，参考Microsoft提供的官方文档，这里不再赘述。<br>
+为了方便的在Visual Studio Code中调试你的代码，你可以配置.vscode/launch.json，这里同样贴出Microsoft提供的官方示例：</p>
+<pre><code class="language-json">{
+&quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;(gdb) Launch&quot;,
+            &quot;type&quot;: &quot;cppdbg&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/helloworld.out&quot;,
+            &quot;args&quot;: [&quot;&quot;],
+            &quot;stopAtEntry&quot;: true,
+            &quot;cwd&quot;: &quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/&quot;,
+            &quot;environment&quot;: [],
+            &quot;externalConsole&quot;: true,
+            &quot;windows&quot;: {
+                &quot;MIMode&quot;: &quot;gdb&quot;,
+                &quot;miDebuggerPath&quot;: &quot;/usr/bin/gdb&quot;,
+                &quot;setupCommands&quot;: [
+                    {
+                        &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,
+                        &quot;text&quot;: &quot;-enable-pretty-printing&quot;,
+                        &quot;ignoreFailures&quot;: true
+                    }
+                ]
+            },
+            &quot;pipeTransport&quot;: {
+                &quot;pipeCwd&quot;: &quot;&quot;,
+                &quot;pipeProgram&quot;: &quot;c:\\windows\\sysnative\\bash.exe&quot;,
+                &quot;pipeArgs&quot;: [&quot;-c&quot;],
+                &quot;debuggerPath&quot;: &quot;/usr/bin/gdb&quot;
+            },
+            &quot;sourceFileMap&quot;: {
+                &quot;/mnt/c&quot;: &quot;${env:systemdrive}/&quot;,
+                &quot;/usr&quot;: &quot;C:\\Users\\...\\usr\\&quot;
+            }
+        }
+    ]
+}
+</code></pre>
+<p>不明之处参考官方文档。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AE%89%E8%A3%85visual-studio-code">安装Visual Studio Code</a></li>
+<li><a href="#visual-studio-code%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E6%8F%92%E4%BB%B6">Visual Studio Code安装必要插件</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85wsllinux%E5%AD%90%E7%B3%BB%E7%BB%9F">安装WSL(Linux子系统)</a></li>
+<li><a href="#wsl%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83">WSL安装必要的编译环境</a></li>
+<li><a href="#visual-studio-code%E9%85%8D%E7%BD%AE">Visual Studio Code配置</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://pickline.github.io/atom.xml" target="_blank">RSS</a>
+</div>
+
+<script>
+  hljs.initHighlightingOnLoad()
+
+  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+  // This should probably be throttled.
+  // Especially because it triggers during smooth scrolling.
+  // https://lodash.com/docs/4.17.10#throttle
+  // You could do like...
+  // window.addEventListener("scroll", () => {
+  //    _.throttle(doThatStuff, 100);
+  // });
+  // Only not doing it here to keep this Pen dependency-free.
+
+  window.addEventListener("scroll", event => {
+    let fromTop = window.scrollY;
+
+    mainNavLinks.forEach((link, index) => {
+      let section = document.getElementById(decodeURI(link.hash).substring(1));
+      let nextSection = null
+      if (mainNavLinks[index + 1]) {
+        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+      }
+      if (section.offsetTop <= fromTop) {
+        if (nextSection) {
+          if (nextSection.offsetTop > fromTop) {
+            link.classList.add("current");
+          } else {
+            link.classList.remove("current");    
+          }
+        } else {
+          link.classList.add("current");
+        }
+      } else {
+        link.classList.remove("current");
+      }
+    });
+  });
+
+</script>
+
+      </div>
+    </div>
+  </body>
+</html>
