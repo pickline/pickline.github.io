@@ -1,16 +1,27 @@
 <html>
   <head>
     <meta charset="utf-8" />
+<meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程 | Pickline&#39;s Blog</title>
-<meta name="description" content="人生苦短" />
-<link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1576300455923">
+<link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1578043542205">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
 
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css" integrity="sha384-zB1R0rpPzHqg7Kpt0Aljp8JPLqbXI3bhnPWROx27a9N0Ll6ZP/+DiW/UqRcLbRjq" crossorigin="anonymous">
+
+<!-- The loading of KaTeX is deferred to speed up page rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js" integrity="sha384-y23I5Q6l+B6vatafAwxRu/0oK/79VlbSz7Q9aiSZUvyWYIYsd+qj+o24G5ZU2zJz" crossorigin="anonymous"></script>
+
+<!-- To automatically render math in text elements, include the auto-render extension: -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous"
+onload="renderMathInElement(document.body);"></script>
+
+<!-- DEMO JS -->
+<script src="media/scripts/index.js"></script>
 
 
 
@@ -20,7 +31,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://pickline.github.io">
-  <img class="avatar" src="https://pickline.github.io/images/avatar.png?v=1576300455923" alt="">
+  <img class="avatar" src="https://pickline.github.io/images/avatar.png?v=1578043542205" alt="">
   </a>
   <h1 class="site-title">
     Pickline&#39;s Blog
@@ -70,51 +81,48 @@
   </div>
 </div>
 
+      
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
               Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程
             </h2>
             <div class="post-info">
-              <span>
-                2019-Jul-01
-              </span>
-              <span>
-                4 min read
-              </span>
+              <time class="post-time">
+                · 2019-Jul-01 ·
+              </time>
               
-                <a href="https://pickline.github.io/tag/fXw6iORj1" class="post-tag">
-                  # C/C++
+                <a href="https://pickline.github.io/tag/fXw6iORj1" class="post-tags">
+                  C/C++
                 </a>
               
-                <a href="https://pickline.github.io/tag/K2Y-UnAo6r" class="post-tag">
-                  # WSL
+                <a href="https://pickline.github.io/tag/K2Y-UnAo6r" class="post-tags">
+                  WSL
                 </a>
               
-                <a href="https://pickline.github.io/tag/mlCYpSJdMY" class="post-tag">
-                  # Windows
+                <a href="https://pickline.github.io/tag/mlCYpSJdMY" class="post-tags">
+                  Windows
                 </a>
               
-                <a href="https://pickline.github.io/tag/xDkjSFwzjZ" class="post-tag">
-                  # Visual Studio Code
+                <a href="https://pickline.github.io/tag/xDkjSFwzjZ" class="post-tags">
+                  Visual Studio Code
                 </a>
               
             </div>
             
-            <div class="post-content-wrapper">
-              <div class="post-content">
-                <p>由于个人原因更换了新电脑，然后需要在新电脑上配置开发环境，于是使用了Visual Studio Code + WSL来配置简便的Linux C/C++开发环境</p>
+            <div class="post-content">
+              <p>由于个人原因更换了新电脑，然后需要在新电脑上配置开发环境，于是使用了Visual Studio Code + WSL来配置简便的Linux C/C++开发环境</p>
 <!-- more -->
 <h1 id="安装visual-studio-code">安装Visual Studio Code</h1>
 <p>这个过程非常简单，按照网上的教程一步步的进行即可。</p>
 <h1 id="visual-studio-code安装必要插件">Visual Studio Code安装必要插件</h1>
-<p>强烈推荐Microsoft官方开发的C/C++插件。<img src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" alt="C/C++插件"></p>
+<p>强烈推荐Microsoft官方开发的C/C++插件。<img src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" alt="C/C++插件" loading="lazy"></p>
 <h1 id="安装wsllinux子系统">安装WSL(Linux子系统)</h1>
-<p>在Microsoft官方商店中搜索Linux，<img src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" alt="Microsoft商店搜索Linux">选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
+<p>在Microsoft官方商店中搜索Linux，<img src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" alt="Microsoft商店搜索Linux" loading="lazy">选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
 <h1 id="wsl安装必要的编译环境">WSL安装必要的编译环境</h1>
 <p>WSL默认只带了gcc编译器，因此想要配置C++编译环境的同学需要自行下载g++编译器以及gdb调试工具。关于这个可以查阅Microsoft官方文档，不再过多赘述。</p>
 <h1 id="visual-studio-code配置">Visual Studio Code配置</h1>
-<p>Visual Studio Code在settings.json中配置wsl为默认shell。<img src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" alt="Visual Studio Code配置wsl为默认shell"><br>
+<p>Visual Studio Code在settings.json中配置wsl为默认shell。<img src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" alt="Visual Studio Code配置wsl为默认shell" loading="lazy"><br>
 接着配置C/C++插件，C/C++插件默认使用项目目录下的.vscode/c_cpp_properties.json文件作为配置文件。这里笔者只简单的使用了Microsoft官方提供的配置文件进行配置，文件如下：</p>
 <pre><code class="language-json">{
     &quot;configurations&quot;: [
@@ -216,69 +224,20 @@
 </code></pre>
 <p>不明之处参考官方文档。</p>
 
-              </div>
-              <div class="toc-container">
-                <ul class="markdownIt-TOC">
-<li><a href="#%E5%AE%89%E8%A3%85visual-studio-code">安装Visual Studio Code</a></li>
-<li><a href="#visual-studio-code%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E6%8F%92%E4%BB%B6">Visual Studio Code安装必要插件</a></li>
-<li><a href="#%E5%AE%89%E8%A3%85wsllinux%E5%AD%90%E7%B3%BB%E7%BB%9F">安装WSL(Linux子系统)</a></li>
-<li><a href="#wsl%E5%AE%89%E8%A3%85%E5%BF%85%E8%A6%81%E7%9A%84%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83">WSL安装必要的编译环境</a></li>
-<li><a href="#visual-studio-code%E9%85%8D%E7%BD%AE">Visual Studio Code配置</a></li>
-</ul>
-
-              </div>
             </div>
           </article>
         </div>
-
+    
         
 
         
-
+    
         <div class="site-footer">
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
-  <a class="rss" href="https://pickline.github.io/atom.xml" target="_blank">RSS</a>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
 </div>
 
 <script>
   hljs.initHighlightingOnLoad()
-
-  let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
-
-  // This should probably be throttled.
-  // Especially because it triggers during smooth scrolling.
-  // https://lodash.com/docs/4.17.10#throttle
-  // You could do like...
-  // window.addEventListener("scroll", () => {
-  //    _.throttle(doThatStuff, 100);
-  // });
-  // Only not doing it here to keep this Pen dependency-free.
-
-  window.addEventListener("scroll", event => {
-    let fromTop = window.scrollY;
-
-    mainNavLinks.forEach((link, index) => {
-      let section = document.getElementById(decodeURI(link.hash).substring(1));
-      let nextSection = null
-      if (mainNavLinks[index + 1]) {
-        nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
-      }
-      if (section.offsetTop <= fromTop) {
-        if (nextSection) {
-          if (nextSection.offsetTop > fromTop) {
-            link.classList.add("current");
-          } else {
-            link.classList.remove("current");    
-          }
-        } else {
-          link.classList.add("current");
-        }
-      } else {
-        link.classList.remove("current");
-      }
-    });
-  });
-
 </script>
 
       </div>

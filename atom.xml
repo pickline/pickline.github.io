@@ -2,14 +2,14 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pickline.github.io</id>
     <title>Pickline&apos;s Blog</title>
-    <updated>2019-12-14T05:14:31.145Z</updated>
+    <updated>2020-01-03T09:25:49.927Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pickline.github.io"/>
     <link rel="self" href="https://pickline.github.io/atom.xml"/>
     <subtitle>人生苦短</subtitle>
     <logo>https://pickline.github.io/images/avatar.png</logo>
     <icon>https://pickline.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2019, Pickline&apos;s Blog</rights>
+    <rights>All rights reserved 2020, Pickline&apos;s Blog</rights>
     <entry>
         <title type="html"><![CDATA[随想]]></title>
         <id>https://pickline.github.io/post/mcaqWcuXX</id>
@@ -89,13 +89,13 @@ end
 <h1 id="安装visual-studio-code">安装Visual Studio Code</h1>
 <p>这个过程非常简单，按照网上的教程一步步的进行即可。</p>
 <h1 id="visual-studio-code安装必要插件">Visual Studio Code安装必要插件</h1>
-<p>强烈推荐Microsoft官方开发的C/C++插件。<img src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" alt="C/C++插件"></p>
+<p>强烈推荐Microsoft官方开发的C/C++插件。<img src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" alt="C/C++插件" loading="lazy"></p>
 <h1 id="安装wsllinux子系统">安装WSL(Linux子系统)</h1>
-<p>在Microsoft官方商店中搜索Linux，<img src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" alt="Microsoft商店搜索Linux">选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
+<p>在Microsoft官方商店中搜索Linux，<img src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" alt="Microsoft商店搜索Linux" loading="lazy">选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
 <h1 id="wsl安装必要的编译环境">WSL安装必要的编译环境</h1>
 <p>WSL默认只带了gcc编译器，因此想要配置C++编译环境的同学需要自行下载g++编译器以及gdb调试工具。关于这个可以查阅Microsoft官方文档，不再过多赘述。</p>
 <h1 id="visual-studio-code配置">Visual Studio Code配置</h1>
-<p>Visual Studio Code在settings.json中配置wsl为默认shell。<img src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" alt="Visual Studio Code配置wsl为默认shell"><br>
+<p>Visual Studio Code在settings.json中配置wsl为默认shell。<img src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" alt="Visual Studio Code配置wsl为默认shell" loading="lazy"><br>
 接着配置C/C++插件，C/C++插件默认使用项目目录下的.vscode/c_cpp_properties.json文件作为配置文件。这里笔者只简单的使用了Microsoft官方提供的配置文件进行配置，文件如下：</p>
 <pre><code class="language-json">{
     &quot;configurations&quot;: [
