@@ -635,6 +635,7 @@ td {
 .next-post .next {
   margin-bottom: 24px;
   color: #343a40;
+  user-select: none;
 }
 .next-post .post-title {
   font-size: 20px;
@@ -720,8 +721,9 @@ td {
   color: #000;
 }
 .archives-container .entries .entry .body a {
-  line-height: 1.4em;
+  line-height: 1.2em;
   display: block;
+  margin-bottom: 1em;
 }
 .archives-container .entries .entry .body a .post-title {
   font-size: 14px;
