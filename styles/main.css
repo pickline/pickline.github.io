@@ -523,18 +523,8 @@ td {
   text-decoration: none;
   display: inline-block;
 }
-.v a::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: #1abc9c;
-  transition: width 0.3s ease;
-}
 .v a:hover {
-  color: #D7191A;
+  color: #D7191A !important;
 }
 .v a:hover::before {
   width: 100%;
@@ -572,7 +562,7 @@ td {
   border: none;
   resize: none;
   outline: none;
-  padding: 10px 5px;
+  margin: 10px 5px;
   max-width: 100%;
   font-size: 0.775em;
 }
@@ -583,8 +573,7 @@ td {
   margin-top: -2px;
 }
 .v .vwrap {
-  border: 1px solid #f0f0f0;
-  border-radius: 4px;
+  border-bottom: 1px solid #f0f0f0;
   margin-bottom: 10px;
   overflow: hidden;
   position: relative;
@@ -597,15 +586,23 @@ td {
   position: relative;
   padding-top: 10px;
 }
+.v .vwrap .vedit textarea {
+  resize: none;
+}
 .v .vwrap .vedit .vctrl {
   text-align: right;
   font-size: 12px;
+  user-select: none;
 }
 .v .vwrap .vedit .vctrl span {
   padding: 10px;
   display: inline-block;
   vertical-align: middle;
   cursor: pointer;
+  transition: all 0.25s ease;
+}
+.v .vwrap .vedit .vctrl span:hover {
+  color: #D7191A;
 }
 .v .vwrap .vedit .vemojis {
   display: none;
@@ -636,7 +633,7 @@ td {
   border: none;
 }
 .v .vwrap .vheader .vinput {
-  width: 33.33%;
+  width: 32%;
   border-bottom: 1px #dedede dashed;
 }
 .v .vwrap .vheader.item2 .vinput {
@@ -646,7 +643,7 @@ td {
   width: 100%;
 }
 .v .vwrap .vheader .vinput:focus {
-  border-bottom-color: #eb5055;
+  border-bottom-color: black;
 }
 @media screen and (max-width: 520px) {
   .v .vwrap .vheader .vinput {
@@ -742,6 +739,9 @@ td {
   width: 50%;
   vertical-align: middle;
 }
+.v .vinfo .vcount {
+  user-select: none;
+}
 .v .vinfo .vcount .vnum {
   font-weight: 600;
   font-size: 1.25em;
@@ -781,11 +781,10 @@ td {
 .v .vbtn {
   transition-duration: 0.4s;
   text-align: center;
-  color: #313131;
-  border: 1px solid #ededed;
-  border-radius: 0.3em;
+  border: none;
+  background-color: white;
+  color: black;
   display: inline-block;
-  background: #ededed;
   margin-bottom: 0;
   font-weight: 400;
   vertical-align: middle;
@@ -803,9 +802,8 @@ td {
 }
 .v .vbtn:active,
 .v .vbtn:hover {
-  color: #3090e4;
-  border-color: #3090e4;
-  background-color: #fff;
+  color: white;
+  background-color: black;
 }
 .v .vempty {
   padding: 1.25em;
@@ -829,7 +827,6 @@ td {
   width: 3.125em;
   height: 3.125em;
   float: left;
-  border-radius: 50%;
   margin-right: 0.7525em;
   border: 1px solid #f5f5f5;
   padding: 0.125em;
@@ -850,19 +847,12 @@ td {
   font-weight: 500;
   margin-right: 0.875em;
   cursor: pointer;
-  color: #1abc9c;
   text-decoration: none;
   display: inline-block;
 }
-.v .vlist .vcard .vhead .vnick::before {
-  content: '';
-  position: absolute;
-  width: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: #1abc9c;
-  transition: width 0.3s ease;
+.v .vlist .vcard .vhead .vnick::selection {
+  color: white;
+  background-color: black;
 }
 .v .vlist .vcard .vhead .vnick:hover {
   color: #D7191A;
@@ -895,6 +885,7 @@ td {
   color: #b3b3b3;
   font-size: 0.75em;
   margin-right: 0.875em;
+  user-select: none;
 }
 .v .vlist .vcard .vh .vmeta {
   line-height: 1;
@@ -902,9 +893,13 @@ td {
 }
 .v .vlist .vcard .vh .vmeta .vat {
   font-size: 0.8125em;
-  color: #ef2f11;
   cursor: pointer;
   float: right;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+.v .vlist .vcard .vh .vmeta .vat:hover {
+  color: #D7191A;
 }
 .v .vlist .vcard:last-child .vh {
   border-bottom: none;
@@ -919,6 +914,10 @@ td {
   position: relative;
   margin-bottom: 0.75em;
   padding-top: 0.625em;
+}
+.v .vlist .vcard .vcontent p::selection {
+  color: white;
+  background-color: #4a4a4a;
 }
 .v .vlist .vcard .vcontent img,
 .v .vlist .vcard .vcontent iframe,
