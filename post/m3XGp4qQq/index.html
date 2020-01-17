@@ -1,9 +1,10 @@
+<!DOCTYPE html>
 <html>
   <head>
-  <meta charset="utf-8" />
+    <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>curl | Pickline&#39;s Blog</title>
+<title>使用Vue开发博客音乐播放插件记录(一) | Pickline&#39;s Blog</title>
 <link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1579255343619">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
@@ -25,6 +26,9 @@ onload="renderMathInElement(document.body);"></script>
 
 
 
+    
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
+    
   </head>
   <body>
     <div class="main">
@@ -81,40 +85,64 @@ onload="renderMathInElement(document.body);"></script>
   </div>
 </div>
 
-        <div class="current-tag-container">
-            <h2 class="title">
-                标签：curl
-            </h2> 
-        </div>
-        <div class="post-container">
-  
-    <article class="post">
-      <a href="https://pickline.github.io/post/shi-yong-curl-de-guo-cheng-zhong-yu-dao-de-wen-ti">
-        <h2 class="post-title">使用curl的过程中遇到的问题</h2>
-      </a>
-      <div class="post-info">
-        <time class="post-time">
-          · 2019-Sep-07 ·
-        </time>
-        
-          <a href="https://pickline.github.io/tag/TiVygum8-" class="post-tag">
-            curl
-          </a>
-        
-      </div>
       
-      <div class="post-abstract">
-        <p>使用curl下载时可能出现的Operation timed out问题解决</p>
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              使用Vue开发博客音乐播放插件记录(一)
+            </h2>
+            <div class="post-info">
+              <time class="post-time">
+                · 2020-Jan-17 ·
+              </time>
+              
+            </div>
+            
+            <div class="post-content">
+              <p>为了开发实现一个和自己定义的博客主题风格相配的音乐播放插件以及学习新的技术</p>
+<!-- more -->
+<h1 id="技术选择">技术选择</h1>
+<p>技术方面，选择近几年最火的几大前端框架之一的Vue，因为这次开发的东西比较小，因此选择了纯粹的Vue+Typescript，而没有选择使用Vuex。使用Typescript的原因一方面是因为想要学习Typescript，另一方面也是相信它能</p>
+<h1 id="开发环境配置">开发环境配置</h1>
+<p>开发环境配置使用Vue官方的Vue-cli初始化项目，具体配置过程不再赘述，按照工具提供的选项选择即可。</p>
+<h1 id="学习计划">学习计划</h1>
+<ol>
+<li>学习使用Vue</li>
+<li>学习Vue的组件化开发方法</li>
+<li>学习Typescript</li>
+</ol>
 
-      </di>
-    </article>
-  
-</div>
+            </div>
+          </article>
+        </div>
+    
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://pickline.github.io/post/mcaqWcuXX">
+              <h3 class="post-title">
+                随想
+              </h3>
+            </a>
+          </div>  
+        
 
-        <div class="pagination-container">
-  
-  
-</div>
+        
+          <script type="text/javascript" src="https://cdn.staticfile.org/valine/1.3.10/Valine.Pure.min.js"></script>
+
+<div id="valine-container"></div>
+
+<script>
+    var valine = new Valine();
+    valine.init({
+        el:"#valine-container",
+        appId: 'wRHMLbm49CXnyUjJJWXztGFL-gzGzoHsz',
+        appKey:'jd48UIznr9gFP1bXRHSfu3oJ',
+        pageSize: new Number('10'),
+        placeholder: 'ヾ(=･ω･=)o'
+    })
+</script>
+        
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
