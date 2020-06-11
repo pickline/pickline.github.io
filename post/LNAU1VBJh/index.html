@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>使用curl的过程中遇到的问题 | Pickline&#39;s Blog</title>
+<title>LeetCode 每日一题(1) | Pickline&#39;s Blog</title>
 <link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1591865973088">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
@@ -89,28 +89,58 @@ onload="renderMathInElement(document.body);"></script>
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              使用curl的过程中遇到的问题
+              LeetCode 每日一题(1)
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2019-Sep-07 ·
+                · 2020-Jun-11 ·
               </time>
-              
-                <a href="https://pickline.github.io/tag/TiVygum8-/" class="post-tags">
-                  curl
-                </a>
               
             </div>
             
             <div class="post-content">
-              <p>使用curl下载时可能出现的Operation timed out问题解决</p>
-<!-- more -->
-<h1 id="问题">问题</h1>
-<p>在安装rvm的过程中，我们需要使用curl完成安装过程，运行安装命令<code>curl -L https://get.rvm.io | bash -s stable --ruby</code>后，curl在成功下载第一个文件后，抛出错误:<code>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation timed out</code>。</p>
-<h1 id="查询">查询</h1>
-<p>在经过一番资料搜索过后，确定问题出在没有在Github中添加当前主机ssh公钥，导致ssh连接raw.githubusercontent.com时ssh访问被拒绝，导致curl下载超时。</p>
-<h1 id="解决方法">解决方法</h1>
-<p>在Github中添加ssh公钥即可，具体做法可参考<a href="https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account">Gihub Help</a></p>
+              <h1 id="题目"><a href="https://leetcode-cn.com/problems/daily-temperatures/">题目</a></h1>
+<p>题目链接在标题中，去掉包装在外面的话，题目的核心意思是寻找元素右边距离最近的更大元素。</p>
+<h1 id="暴力解法">暴力解法</h1>
+<p>最容易想到的解法是使用暴力法，双重循环遍历数组中的所有元素寻求解。</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        vector&lt;int&gt; dailyTemperatures(vecotr&lt;int&gt;&amp; T) {
+            int size = T.size();
+            vector&lt;int&gt; res;
+            for (int i = 0; i &lt; size; i++) {
+                for (int j = i + 1; j &lt; size; j++) {
+                    if (T[i] &lt; T[j]) {
+                        res[i] = j - i;
+                        break;
+                    }
+                }
+            }
+            return res
+        }
+}
+</code></pre>
+<p>这是比较直观的一种解法，但是复杂度就比较不如人意了，显然，暴力法解题的复杂度是O(mn)</p>
+<h1 id="简单解法">简单解法</h1>
+<p>现在来介绍一下简单的解法。这个问题的核心在于找到最近的比自己大的元素，显然当紧邻的下一个元素不比自己大的时候，我们就无法直接得到答案。那么，为了降低时间复杂度，我们可以引入一个数据结构来记录已经遍历过的元素，这里我选择栈。<br>
+在一次遍历中，首先判断当前元素是否大于栈顶元素，如果大于栈顶元素，那么显然栈顶元素最近的比自己大的元素就是当前元素，计算结果之后，弹出栈顶元素，继续判断栈内元素直到栈空或者栈内元素比当前元素大，压入当前元素。下面贴出代码</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        vector&lt;int&gt; dailylTemperatures(vector&lt;int&gt;&amp; T) {
+            int size = T.size();
+            vector&lt;int&gt; res;
+            stack&lt;int&gt; st;
+            for (int i = 0; i &lt; size; i++) {
+                while(!st.empty() &amp;&amp; T[i] &gt; T[st.top()]){
+                    int previousIndex = st.top();
+                    res[previousIndex] = i - previousIndex;
+                    st.pop();
+                }
+            }
+            st.push(i);
+        }
+}
+</code></pre>
 
             </div>
           </article>
@@ -119,9 +149,9 @@ onload="renderMathInElement(document.body);"></script>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://pickline.github.io/post/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/">
+            <a href="https://pickline.github.io/post/m3XGp4qQq/">
               <h3 class="post-title">
-                Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程
+                使用Vue开发博客音乐播放插件记录(一)
               </h3>
             </a>
           </div>  
