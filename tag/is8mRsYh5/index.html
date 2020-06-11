@@ -1,10 +1,9 @@
-<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
+  <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>使用curl的过程中遇到的问题 | Pickline&#39;s Blog</title>
+<title>leetcode | Pickline&#39;s Blog</title>
 <link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1591866182056">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
@@ -26,9 +25,6 @@ onload="renderMathInElement(document.body);"></script>
 
 
 
-    
-      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script>
-    
   </head>
   <body>
     <div class="main">
@@ -85,64 +81,39 @@ onload="renderMathInElement(document.body);"></script>
   </div>
 </div>
 
-      
-        <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              使用curl的过程中遇到的问题
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-Sep-07 ·
-              </time>
-              
-                <a href="https://pickline.github.io/tag/TiVygum8-/" class="post-tags">
-                  curl
-                </a>
-              
-            </div>
-            
-            <div class="post-content">
-              <p>使用curl下载时可能出现的Operation timed out问题解决</p>
-<!-- more -->
-<h1 id="问题">问题</h1>
-<p>在安装rvm的过程中，我们需要使用curl完成安装过程，运行安装命令<code>curl -L https://get.rvm.io | bash -s stable --ruby</code>后，curl在成功下载第一个文件后，抛出错误:<code>curl: (7) Failed to connect to raw.githubusercontent.com port 443: Operation timed out</code>。</p>
-<h1 id="查询">查询</h1>
-<p>在经过一番资料搜索过后，确定问题出在没有在Github中添加当前主机ssh公钥，导致ssh连接raw.githubusercontent.com时ssh访问被拒绝，导致curl下载超时。</p>
-<h1 id="解决方法">解决方法</h1>
-<p>在Github中添加ssh公钥即可，具体做法可参考<a href="https://help.github.com/en/articles/adding-a-new-ssh-key-to-your-github-account">Gihub Help</a></p>
-
-            </div>
-          </article>
+        <div class="current-tag-container">
+            <h2 class="title">
+                标签：leetcode
+            </h2> 
         </div>
-    
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://pickline.github.io/post/LNAU1VBJh/">
+        <h2 class="post-title">LeetCode 每日一题(1)</h2>
+      </a>
+      <div class="post-info">
+        <time class="post-time">
+          · 2020-Jun-11 ·
+        </time>
         
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://pickline.github.io/post/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/">
-              <h3 class="post-title">
-                Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程
-              </h3>
-            </a>
-          </div>  
+          <a href="https://pickline.github.io/tag/is8mRsYh5/" class="post-tag">
+            leetcode
+          </a>
         
+      </div>
+      
+      <div class="post-abstract">
+        
+      </di>
+    </article>
+  
+</div>
 
-        
-          <script type="text/javascript" src="https://cdn.staticfile.org/valine/1.3.10/Valine.Pure.min.js"></script>
-
-<div id="valine-container"></div>
-
-<script>
-    var valine = new Valine();
-    valine.init({
-        el:"#valine-container",
-        appId: 'wRHMLbm49CXnyUjJJWXztGFL-gzGzoHsz',
-        appKey:'jd48UIznr9gFP1bXRHSfu3oJ',
-        pageSize: new Number('10'),
-        placeholder: 'ヾ(=･ω･=)o'
-    })
-</script>
-        
+        <div class="pagination-container">
+  
+  
+</div>
 
         <div class="site-footer">
   Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
