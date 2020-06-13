@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pickline.github.io</id>
     <title>Pickline&apos;s Blog</title>
-    <updated>2020-06-13T09:05:32.355Z</updated>
+    <updated>2020-06-13T09:06:57.681Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pickline.github.io"/>
     <link rel="self" href="https://pickline.github.io/atom.xml"/>
@@ -44,7 +44,7 @@
         }
 };
 </code></pre>
-<h1 id="最优解法">最优解法</h1>
+<h1 id="优秀解法">优秀解法</h1>
 <p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为O(n)，而空间复杂度也只是O(1)，算是比较优越的算法。</p>
 <pre><code class="language-c">int climbStairs(int n) {
     int p, q = 0;
