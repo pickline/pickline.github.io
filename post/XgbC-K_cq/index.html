@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
 <meta name="description" content="" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>使用Vue开发博客音乐播放插件记录(一) | Pickline&#39;s Blog</title>
+<title>LeetCode 每日一题(2) | Pickline&#39;s Blog</title>
 <link rel="shortcut icon" href="https://pickline.github.io/favicon.ico?v=1592039130315">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://pickline.github.io/styles/main.css">
@@ -89,28 +89,61 @@ onload="renderMathInElement(document.body);"></script>
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              使用Vue开发博客音乐播放插件记录(一)
+              LeetCode 每日一题(2)
             </h2>
             <div class="post-info">
               <time class="post-time">
-                · 2020-Jan-17 ·
+                · 2020-Jun-13 ·
               </time>
+              
+                <a href="https://pickline.github.io/tag/is8mRsYh5/" class="post-tags">
+                  leetcode
+                </a>
               
             </div>
             
             <div class="post-content">
-              <p>为了开发实现一个和自己定义的博客主题风格相配的音乐播放插件以及学习新的技术</p>
-<!-- more -->
-<h1 id="技术选择">技术选择</h1>
-<p>技术方面，选择近几年最火的几大前端框架之一的Vue，因为这次开发的东西比较小，因此选择了纯粹的Vue+Typescript，而没有选择使用Vuex。使用Typescript的原因一方面是因为想要学习Typescript，另一方面也是相信它能</p>
-<h1 id="开发环境配置">开发环境配置</h1>
-<p>开发环境配置使用Vue官方的Vue-cli初始化项目，具体配置过程不再赘述，按照工具提供的选项选择即可。</p>
-<h1 id="学习计划">学习计划</h1>
-<ol>
-<li>学习使用Vue</li>
-<li>学习Vue的组件化开发方法</li>
-<li>学习Typescript</li>
-</ol>
+              <h1 id="题目"><a href="https://leetcode-cn.com/problems/climbing-stairs/">题目</a></h1>
+<p>看到这个题目，一开始没啥思路，后面在纸上简单的推了6、7次之后，发现得出的一系列值符合斐波那契数列的特征。</p>
+<h1 id="递归法">递归法</h1>
+<p>在知道是斐波那契数列之后，我第一时间想到的就是使用递归来得出结果。</p>
+<pre><code class="language-c">int climbStairs(int n) {
+    if (n == 1 || n == 2) {
+        return n;
+    }else {
+        return climbStairs(n - 1) + climbStairs(n - 2);
+    }
+}
+</code></pre>
+<p>这种方法非常直观，但是效率比较低，而且递归栈也会特别深，有移除的风险</p>
+<h1 id="改良的递归">改良的递归</h1>
+<p>这里使用vector来记录下之前的结果，就可以避免递归会出现的问题</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        vector&lt;int&gt; fab;
+        int climbStairs(int n) {
+            if (n == 1 || n == 2) {
+                this-&gt;fab.push_back(n);
+            }else {
+                this-&gt;fab.push_back(this-&gt;fab[n - 2] + this-&gt;fab[n - 3]);
+            }
+            return this-&gt;fab[n - 1];
+        }
+};
+</code></pre>
+<h1 id="最优解法">最优解法</h1>
+<p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为O(n)，而空间复杂度也只是O(1)，算是比较优越的算法。</p>
+<pre><code class="language-c">int climbStairs(int n) {
+    int p, q = 0;
+    int r = 1;
+    for (int i = 0; i &lt; n; i++) {
+        p = q;
+        q = r;
+        r = q + p;
+    }
+    return r;
+}
+</code></pre>
 
             </div>
           </article>
@@ -119,9 +152,9 @@ onload="renderMathInElement(document.body);"></script>
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://pickline.github.io/post/mcaqWcuXX/">
+            <a href="https://pickline.github.io/post/m3XGp4qQq/">
               <h3 class="post-title">
-                随想
+                使用Vue开发博客音乐播放插件记录(一)
               </h3>
             </a>
           </div>  

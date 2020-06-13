@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pickline.github.io</id>
     <title>Pickline&apos;s Blog</title>
-    <updated>2020-06-11T09:03:05.216Z</updated>
+    <updated>2020-06-13T09:05:32.355Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pickline.github.io"/>
     <link rel="self" href="https://pickline.github.io/atom.xml"/>
@@ -11,51 +11,50 @@
     <icon>https://pickline.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Pickline&apos;s Blog</rights>
     <entry>
-        <title type="html"><![CDATA[LeetCode 每日一题(1)]]></title>
-        <id>https://pickline.github.io/post/LNAU1VBJh/</id>
-        <link href="https://pickline.github.io/post/LNAU1VBJh/">
+        <title type="html"><![CDATA[LeetCode 每日一题(2)]]></title>
+        <id>https://pickline.github.io/post/XgbC-K_cq/</id>
+        <link href="https://pickline.github.io/post/XgbC-K_cq/">
         </link>
-        <updated>2020-06-11T08:40:26.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="题目"><a href="https://leetcode-cn.com/problems/daily-temperatures/">题目</a></h1>
-<p>题目链接在标题中，去掉包装在外面的话，题目的核心意思是寻找元素右边距离最近的更大元素。</p>
-<h1 id="暴力解法">暴力解法</h1>
-<p>最容易想到的解法是使用暴力法，双重循环遍历数组中的所有元素寻求解。</p>
-<pre><code class="language-c++">class Solution {
-    public:
-        vector&lt;int&gt; dailyTemperatures(vecotr&lt;int&gt;&amp; T) {
-            int size = T.size();
-            vector&lt;int&gt; res;
-            for (int i = 0; i &lt; size; i++) {
-                for (int j = i + 1; j &lt; size; j++) {
-                    if (T[i] &lt; T[j]) {
-                        res[i] = j - i;
-                        break;
-                    }
-                }
-            }
-            return res
-        }
+        <updated>2020-06-13T08:50:55.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="题目"><a href="https://leetcode-cn.com/problems/climbing-stairs/">题目</a></h1>
+<p>看到这个题目，一开始没啥思路，后面在纸上简单的推了6、7次之后，发现得出的一系列值符合斐波那契数列的特征。</p>
+<h1 id="递归法">递归法</h1>
+<p>在知道是斐波那契数列之后，我第一时间想到的就是使用递归来得出结果。</p>
+<pre><code class="language-c">int climbStairs(int n) {
+    if (n == 1 || n == 2) {
+        return n;
+    }else {
+        return climbStairs(n - 1) + climbStairs(n - 2);
+    }
 }
 </code></pre>
-<p>这是比较直观的一种解法，但是复杂度就比较不如人意了，显然，暴力法解题的复杂度是O(mn)</p>
-<h1 id="简单解法">简单解法</h1>
-<p>现在来介绍一下简单的解法。这个问题的核心在于找到最近的比自己大的元素，显然当紧邻的下一个元素不比自己大的时候，我们就无法直接得到答案。那么，为了降低时间复杂度，我们可以引入一个数据结构来记录已经遍历过的元素，这里我选择栈。<br>
-在一次遍历中，首先判断当前元素是否大于栈顶元素，如果大于栈顶元素，那么显然栈顶元素最近的比自己大的元素就是当前元素，计算结果之后，弹出栈顶元素，继续判断栈内元素直到栈空或者栈内元素比当前元素大，压入当前元素。下面贴出代码</p>
+<p>这种方法非常直观，但是效率比较低，而且递归栈也会特别深，有移除的风险</p>
+<h1 id="改良的递归">改良的递归</h1>
+<p>这里使用vector来记录下之前的结果，就可以避免递归会出现的问题</p>
 <pre><code class="language-c++">class Solution {
     public:
-        vector&lt;int&gt; dailylTemperatures(vector&lt;int&gt;&amp; T) {
-            int size = T.size();
-            vector&lt;int&gt; res;
-            stack&lt;int&gt; st;
-            for (int i = 0; i &lt; size; i++) {
-                while(!st.empty() &amp;&amp; T[i] &gt; T[st.top()]){
-                    int previousIndex = st.top();
-                    res[previousIndex] = i - previousIndex;
-                    st.pop();
-                }
+        vector&lt;int&gt; fab;
+        int climbStairs(int n) {
+            if (n == 1 || n == 2) {
+                this-&gt;fab.push_back(n);
+            }else {
+                this-&gt;fab.push_back(this-&gt;fab[n - 2] + this-&gt;fab[n - 3]);
             }
-            st.push(i);
+            return this-&gt;fab[n - 1];
         }
+};
+</code></pre>
+<h1 id="最优解法">最优解法</h1>
+<p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为O(n)，而空间复杂度也只是O(1)，算是比较优越的算法。</p>
+<pre><code class="language-c">int climbStairs(int n) {
+    int p, q = 0;
+    int r = 1;
+    for (int i = 0; i &lt; n; i++) {
+        p = q;
+        q = r;
+        r = q + p;
+    }
+    return r;
 }
 </code></pre>
 ]]></content>
