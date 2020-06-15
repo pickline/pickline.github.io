@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pickline.github.io</id>
     <title>Pickline&apos;s Blog</title>
-    <updated>2020-06-15T03:33:39.858Z</updated>
+    <updated>2020-06-15T09:07:34.225Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pickline.github.io"/>
     <link rel="self" href="https://pickline.github.io/atom.xml"/>
@@ -98,7 +98,7 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
 };
 </code></pre>
 <h1 id="优秀解法">优秀解法</h1>
-<p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为O(n)，而空间复杂度也只是O(1)，算是比较优越的算法。</p>
+<p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，而空间复杂度也只是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>，算是比较优越的算法。</p>
 <pre><code class="language-c">int climbStairs(int n) {
     int p, q = 0;
     int r = 1;
@@ -108,6 +108,56 @@ c100.7 8.3 195.3 44 280 108 55.3 42 101.7 93 139 153l9 14c2.7-4 5.7-8.7 9-14
         r = q + p;
     }
     return r;
+}
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[LeetCode 每日一题(1)]]></title>
+        <id>https://pickline.github.io/post/LNAU1VBJh/</id>
+        <link href="https://pickline.github.io/post/LNAU1VBJh/">
+        </link>
+        <updated>2020-06-11T08:40:26.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="题目"><a href="https://leetcode-cn.com/problems/daily-temperatures/">题目</a></h1>
+<p>题目链接在标题中，去掉包装在外面的话，题目的核心意思是寻找元素右边距离最近的更大元素。</p>
+<h1 id="暴力解法">暴力解法</h1>
+<p>最容易想到的解法是使用暴力法，双重循环遍历数组中的所有元素寻求解。</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        vector&lt;int&gt; dailyTemperatures(vecotr&lt;int&gt;&amp; T) {
+            int size = T.size();
+            vector&lt;int&gt; res;
+            for (int i = 0; i &lt; size; i++) {
+                for (int j = i + 1; j &lt; size; j++) {
+                    if (T[i] &lt; T[j]) {
+                        res[i] = j - i;
+                        break;
+                    }
+                }
+            }
+            return res
+        }
+}
+</code></pre>
+<p>这是比较直观的一种解法，但是复杂度就比较不如人意了，显然，暴力法解题的复杂度是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h1 id="简单解法">简单解法</h1>
+<p>现在来介绍一下简单的解法。这个问题的核心在于找到最近的比自己大的元素，显然当紧邻的下一个元素不比自己大的时候，我们就无法直接得到答案。那么，为了降低时间复杂度，我们可以引入一个数据结构来记录已经遍历过的元素，这里我选择栈。<br>
+在一次遍历中，首先判断当前元素是否大于栈顶元素，如果大于栈顶元素，那么显然栈顶元素最近的比自己大的元素就是当前元素，计算结果之后，弹出栈顶元素，继续判断栈内元素直到栈空或者栈内元素比当前元素大，压入当前元素。下面贴出代码</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        vector&lt;int&gt; dailylTemperatures(vector&lt;int&gt;&amp; T) {
+            int size = T.size();
+            vector&lt;int&gt; res;
+            stack&lt;int&gt; st;
+            for (int i = 0; i &lt; size; i++) {
+                while(!st.empty() &amp;&amp; T[i] &gt; T[st.top()]){
+                    int previousIndex = st.top();
+                    res[previousIndex] = i - previousIndex;
+                    st.pop();
+                }
+            }
+            st.push(i);
+        }
 }
 </code></pre>
 ]]></content>
