@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://pickline.github.io</id>
     <title>Pickline&apos;s Blog</title>
-    <updated>2020-06-15T09:07:34.225Z</updated>
+    <updated>2020-06-15T09:24:22.670Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://pickline.github.io"/>
     <link rel="self" href="https://pickline.github.io/atom.xml"/>
@@ -10,6 +10,73 @@
     <logo>https://pickline.github.io/images/avatar.png</logo>
     <icon>https://pickline.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Pickline&apos;s Blog</rights>
+    <entry>
+        <title type="html"><![CDATA[LeetCode 每日一题(4)]]></title>
+        <id>https://pickline.github.io/post/ijPTMf2QI/</id>
+        <link href="https://pickline.github.io/post/ijPTMf2QI/">
+        </link>
+        <updated>2020-06-15T09:14:40.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="题目"><a href="https://leetcode-cn.com/submissions/detail/79168087/">题目</a></h1>
+<p>这个题很简单，直接贴代码，时间复杂度为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>m</mi><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(mn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<pre><code class="language-c++">class Solution {
+    public:
+        string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {
+            if (!strs.size()) {
+                return &quot;&quot;;
+            }
+            int length = strs[0].size();
+            int count = strs.size();
+            for (int i = 0; i &lt; length; ++i) {
+                char c = strs[0][i];
+                for (int j = 1; j &lt; count; ++j) {
+                    if (i == strs[j].size() || strs[j][i] != c) {
+                        return strs[0].substr(0, i);
+                    }
+                }
+            }
+            return strs[0];
+        }
+};
+</code></pre>
+<h1 id="更优解">更优解</h1>
+<p>leetcode官方提供的解题思路中，有一种思路比较清奇，使用二分法来减少循环次数。显然，最长公共前缀长度不会超过最短字符串，那么就可以以此为依据开始二分查找，下面直接贴上leetcode官方代码</p>
+<pre><code class="language-c++">class Solution {
+    public:
+        string longestCommonPrefix(vector&lt;string&gt;&amp; strs) {
+            if (!strs.size()) {
+                return &quot;&quot;;
+            }
+            int minLength = min_element(strs.begin(), strs.end(), [](const string&amp; s, const string&amp; t) {return s.size() &lt; t.size();})-&gt;size();
+            int low = 0, high = minLength;
+            while (low &lt; high) {
+                int mid = (high - low + 1) / 2 + low;
+                if (isCommonPrefix(strs, mid)) {
+                    low = mid;
+                }
+                else {
+                    high = mid - 1;
+                }
+            }
+            return strs[0].substr(0, low);
+        }
+
+        bool isCommonPrefix(const vector&lt;string&gt;&amp; strs, int length) {
+            string str0 = strs[0].substr(0, length);
+            int count = strs.size();
+            for (int i = 1; i &lt; count; ++i) {
+                string str = strs[i];
+                for (int j = 0; j &lt; length; ++j) {
+                    if (str0[j] != str[j]) {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+};
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[LeetCode 每日一题(3)]]></title>
         <id>https://pickline.github.io/post/baJkYIwDN/</id>
