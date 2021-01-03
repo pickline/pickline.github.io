@@ -107,7 +107,7 @@
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2021/01/03/hello-world/" class="article-date">
-  <time datetime="2021-01-03T11:16:31.808Z" itemprop="datePublished">2021-01-03</time>
+  <time datetime="2021-01-03T11:34:50.024Z" itemprop="datePublished">2021-01-03</time>
 </a>
     
   </div>
@@ -140,10 +140,340 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="https://pickline.site/2021/01/03/hello-world/" data-id="ckjh1iedp0000fpri2f7yc6bn" class="article-share-link">分享到</a>
+        <a data-url="https://pickline.site/2021/01/03/hello-world/" data-id="ckjh25uui0004hiodestge40h" class="article-share-link">分享到</a>
       
 
       
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-ijPTMf2QI" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/ijPTMf2QI/" class="article-date">
+  <time datetime="2020-06-15T09:14:40.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/ijPTMf2QI/">LeetCode 每日一题(4)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/submissions/detail/79168087/">题目</a></h1><p>这个题很简单，直接贴代码，时间复杂度为$O(mn)$</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!strs.size()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> length = strs[<span class="number">0</span>].size();</span><br><span class="line">            <span class="keyword">int</span> count = strs.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; ++i) &#123;</span><br><span class="line">                <span class="keyword">char</span> c = strs[<span class="number">0</span>][i];</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; count; ++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (i == strs[j].size() || strs[j][i] != c) &#123;</span><br><span class="line">                        <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>, i);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> strs[<span class="number">0</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="更优解"><a href="#更优解" class="headerlink" title="更优解"></a>更优解</h1><p>leetcode官方提供的解题思路中，有一种思路比较清奇，使用二分法来减少循环次数。显然，最长公共前缀长度不会超过最短字符串，那么就可以以此为依据开始二分查找，下面直接贴上leetcode官方代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">string</span> <span class="title">longestCommonPrefix</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!strs.size()) &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">int</span> minLength = min_element(strs.begin(), strs.end(), [](<span class="keyword">const</span> <span class="built_in">string</span>&amp; s, <span class="keyword">const</span> <span class="built_in">string</span>&amp; t) &#123;<span class="keyword">return</span> s.size() &lt; t.size();&#125;)-&gt;size();</span><br><span class="line">            <span class="keyword">int</span> low = <span class="number">0</span>, high = minLength;</span><br><span class="line">            <span class="keyword">while</span> (low &lt; high) &#123;</span><br><span class="line">                <span class="keyword">int</span> mid = (high - low + <span class="number">1</span>) / <span class="number">2</span> + low;</span><br><span class="line">                <span class="keyword">if</span> (isCommonPrefix(strs, mid)) &#123;</span><br><span class="line">                    low = mid;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> &#123;</span><br><span class="line">                    high = mid - <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> strs[<span class="number">0</span>].substr(<span class="number">0</span>, low);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">bool</span> <span class="title">isCommonPrefix</span><span class="params">(<span class="keyword">const</span> <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; strs, <span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">            <span class="built_in">string</span> str0 = strs[<span class="number">0</span>].substr(<span class="number">0</span>, length);</span><br><span class="line">            <span class="keyword">int</span> count = strs.size();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; count; ++i) &#123;</span><br><span class="line">                <span class="built_in">string</span> str = strs[i];</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; length; ++j) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (str0[j] != str[j]) &#123;</span><br><span class="line">                        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2020/06/15/ijPTMf2QI/" data-id="ckjh25uuk0005hioda2cc4n8r" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-baJkYIwDN" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/15/baJkYIwDN/" class="article-date">
+  <time datetime="2020-06-15T02:14:21.000Z" itemprop="datePublished">2020-06-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/15/baJkYIwDN/">LeetCode 每日一题(3)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/powx-n/">题目</a></h1><p>本日的题目引出了一个经典的算法———快速幂算法。</p>
+<h1 id="快速幂算法"><a href="#快速幂算法" class="headerlink" title="快速幂算法"></a>快速幂算法</h1><p>快速幂算法的思想非常简单，即把整数的整数次幂分解为多个数的乘法。<br>a的b次幂可以转换成b次a的乘法<br>$$<br>    a ^ b = \underbrace{a * a * a … * a}<em>{b}<br>$$<br>显然上面公式是最朴素的求解整数次幂的算法，算法的复杂度是$O(n)$。这个算法存在改进方法，即减少乘法次数。将幂数按照二进制展开<br>$$<br>    b = a</em>{0} * 2 ^ 0 + a_{1} * 2 ^ 1 + a_{2} * 2 ^ 2 + … + a_{n} * 2 ^ n<br>$$<br>显然$n \leqslant Log_{2}{b}$，且<br>$$<br>    a = a ^ {a_{0} * 2 ^ 0 + a_{1} * 2 ^ 1 + a_{2} * 2 ^ 2 + … + a_{n} * 2 ^ n} \<br>    a =  a ^ {a_{0} * 2 ^ 0} + a ^ {a_{1} * 2 ^ 1}+ a ^ {a_{2} * 2 ^ 2} + … + a ^ {a_{n} * 2 ^ n}<br>$$<br>这就是快速幂算法，时间复杂度为$O(Log_{2}n)$</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><p>这是我写的解题代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">double</span> <span class="title">myPow</span><span class="params">(<span class="keyword">double</span> x, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">double</span> res = <span class="number">1.0</span>;</span><br><span class="line">            <span class="keyword">if</span> (n &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                x = <span class="number">1.0</span> / x;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span> (n) &#123;</span><br><span class="line">                <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</span><br><span class="line">                    res *= x; </span><br><span class="line">                &#125;</span><br><span class="line">                x *= x;</span><br><span class="line">                n /= <span class="number">2</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2020/06/15/baJkYIwDN/" data-id="ckjh25uug0003hiod9x6m5ugj" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-XgbC-K_cq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/13/XgbC-K_cq/" class="article-date">
+  <time datetime="2020-06-13T08:50:55.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/13/XgbC-K_cq/">LeetCode 每日一题(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/climbing-stairs/">题目</a></h1><p>看到这个题目，一开始没啥思路，后面在纸上简单的推了6、7次之后，发现得出的一系列值符合斐波那契数列的特征。</p>
+<h1 id="递归法"><a href="#递归法" class="headerlink" title="递归法"></a>递归法</h1><p>在知道是斐波那契数列之后，我第一时间想到的就是使用递归来得出结果。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> climbStairs(n - <span class="number">1</span>) + climbStairs(n - <span class="number">2</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种方法非常直观，但是效率比较低，而且递归栈也会特别深，有移除的风险</p>
+<h1 id="改良的递归"><a href="#改良的递归" class="headerlink" title="改良的递归"></a>改良的递归</h1><p>这里使用vector来记录下之前的结果，就可以避免递归会出现的问题</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; fab;</span><br><span class="line">        <span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (n == <span class="number">1</span> || n == <span class="number">2</span>) &#123;</span><br><span class="line">                <span class="keyword">this</span>-&gt;fab.push_back(n);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">this</span>-&gt;fab.push_back(<span class="keyword">this</span>-&gt;fab[n - <span class="number">2</span>] + <span class="keyword">this</span>-&gt;fab[n - <span class="number">3</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">this</span>-&gt;fab[n - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="优秀解法"><a href="#优秀解法" class="headerlink" title="优秀解法"></a>优秀解法</h1><p>实际上这里的问题只关注最终的值，并不关心中间结果，而斐波那契数列第n项的值只依赖于前面两项，因此我们完全可以只记录3项的值，这样时间复杂度仅为$O(n)$，而空间复杂度也只是$O(1)$，算是比较优越的算法。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">climbStairs</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> p, q = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> r = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        p = q;</span><br><span class="line">        q = r;</span><br><span class="line">        r = q + p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> r;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2020/06/13/XgbC-K_cq/" data-id="ckjh25uuc0001hiodfuk88lct" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-LNAU1VBJh" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/11/LNAU1VBJh/" class="article-date">
+  <time datetime="2020-06-11T08:40:26.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/11/LNAU1VBJh/">LeetCode 每日一题(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/daily-temperatures/">题目</a></h1><p>题目链接在标题中，去掉包装在外面的话，题目的核心意思是寻找元素右边距离最近的更大元素。</p>
+<h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><p>最容易想到的解法是使用暴力法，双重循环遍历数组中的所有元素寻求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vecotr&lt;<span class="keyword">int</span>&gt;&amp; T)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = T.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; size; j++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (T[i] &lt; T[j]) &#123;</span><br><span class="line">                        res[i] = j - i;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是比较直观的一种解法，但是复杂度就比较不如人意了，显然，暴力法解题的复杂度是$O(mn)$。</p>
+<h1 id="简单解法"><a href="#简单解法" class="headerlink" title="简单解法"></a>简单解法</h1><p>现在来介绍一下简单的解法。这个问题的核心在于找到最近的比自己大的元素，显然当紧邻的下一个元素不比自己大的时候，我们就无法直接得到答案。那么，为了降低时间复杂度，我们可以引入一个数据结构来记录已经遍历过的元素，这里我选择栈。<br>在一次遍历中，首先判断当前元素是否大于栈顶元素，如果大于栈顶元素，那么显然栈顶元素最近的比自己大的元素就是当前元素，计算结果之后，弹出栈顶元素，继续判断栈内元素直到栈空或者栈内元素比当前元素大，压入当前元素。下面贴出代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dailylTemperatures</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; T)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = T.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">            <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">while</span>(!st.empty() &amp;&amp; T[i] &gt; T[st.top()])&#123;</span><br><span class="line">                    <span class="keyword">int</span> previousIndex = st.top();</span><br><span class="line">                    res[previousIndex] = i - previousIndex;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2020/06/11/LNAU1VBJh/" data-id="ckjh25uu50000hioda6oterlb" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/" rel="tag">leetcode</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-m3XGp4qQq" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/01/17/m3XGp4qQq/" class="article-date">
+  <time datetime="2020-01-17T09:01:11.000Z" itemprop="datePublished">2020-01-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/17/m3XGp4qQq/">使用Vue开发博客音乐播放插件记录(一)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>为了开发实现一个和自己定义的博客主题风格相配的音乐播放插件以及学习新的技术</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/01/17/m3XGp4qQq/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2020/01/17/m3XGp4qQq/" data-id="ckjh25uum0008hiodelmg34sb" class="article-share-link">分享到</a>
+      
+
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-mcaqWcuXX" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/12/13/mcaqWcuXX/" class="article-date">
+  <time datetime="2019-12-13T14:55:15.000Z" itemprop="datePublished">2019-12-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/13/mcaqWcuXX/">随想</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>漫谈，工作了几个月，谈谈自己的体会，也随手记录下自己的心情。</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/12/13/mcaqWcuXX/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2019/12/13/mcaqWcuXX/" data-id="ckjh25uun0009hiod94p2f8f4" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/feeling/" rel="tag">feeling</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+    
+  
+
+    
+    <article id="post-windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/07/01/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/" class="article-date">
+  <time datetime="2019-06-30T16:21:00.000Z" itemprop="datePublished">2019-07-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/01/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/">Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>由于个人原因更换了新电脑，然后需要在新电脑上配置开发环境，于是使用了Visual Studio Code + WSL来配置简便的Linux C/C++开发环境</p>
+        
+          <p class="article-more-link">
+            <a href="/2019/07/01/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/#more">......</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="https://pickline.site/2019/07/01/windows-xia-shi-yong-wsllinux-zi-xi-tong-visual-studio-code-pei-zhi-ccpei-zhi-huan-jing-de-jiao-cheng/" data-id="ckjh25uuo000chiodermb18os" class="article-share-link">分享到</a>
+      
+
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C-C/" rel="tag">C/C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Visual-Studio-Code/" rel="tag">Visual Studio Code</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/WSL/" rel="tag">WSL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Windows/" rel="tag">Windows</a></li></ul>
+
     </footer>
   </div>
   
