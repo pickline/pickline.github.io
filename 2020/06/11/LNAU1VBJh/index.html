@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  LeetCode 每日一题(1) |    white.</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          white.
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        white.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">LeetCode 每日一题(1)</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">6月 11 2020</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <h1 id="题目"><a href="#题目" class="headerlink" title="题目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/daily-temperatures/">题目</a></h1><p>题目链接在标题中，去掉包装在外面的话，题目的核心意思是寻找元素右边距离最近的更大元素。</p>
+<h1 id="暴力解法"><a href="#暴力解法" class="headerlink" title="暴力解法"></a>暴力解法</h1><p>最容易想到的解法是使用暴力法，双重循环遍历数组中的所有元素寻求解。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dailyTemperatures</span><span class="params">(vecotr&lt;<span class="keyword">int</span>&gt;&amp; T)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = T.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; size; j++) &#123;</span><br><span class="line">                    <span class="keyword">if</span> (T[i] &lt; T[j]) &#123;</span><br><span class="line">                        res[i] = j - i;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这是比较直观的一种解法，但是复杂度就比较不如人意了，显然，暴力法解题的复杂度是$O(mn)$。</p>
+<h1 id="简单解法"><a href="#简单解法" class="headerlink" title="简单解法"></a>简单解法</h1><p>现在来介绍一下简单的解法。这个问题的核心在于找到最近的比自己大的元素，显然当紧邻的下一个元素不比自己大的时候，我们就无法直接得到答案。那么，为了降低时间复杂度，我们可以引入一个数据结构来记录已经遍历过的元素，这里我选择栈。<br>在一次遍历中，首先判断当前元素是否大于栈顶元素，如果大于栈顶元素，那么显然栈顶元素最近的比自己大的元素就是当前元素，计算结果之后，弹出栈顶元素，继续判断栈内元素直到栈空或者栈内元素比当前元素大，压入当前元素。下面贴出代码</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dailylTemperatures</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; T)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> size = T.size();</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line">            <span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; st;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">                <span class="keyword">while</span>(!st.empty() &amp;&amp; T[i] &gt; T[st.top()])&#123;</span><br><span class="line">                    <span class="keyword">int</span> previousIndex = st.top();</span><br><span class="line">                    res[previousIndex] = i - previousIndex;</span><br><span class="line">                    st.pop();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            st.push(i);</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1563250958@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+</body>
+</html>

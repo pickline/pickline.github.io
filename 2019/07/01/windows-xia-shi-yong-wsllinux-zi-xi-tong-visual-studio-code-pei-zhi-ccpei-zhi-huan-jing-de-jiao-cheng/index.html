@@ -1,0 +1,203 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>  Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程 |    white.</title>
+  <meta name="description" content="A minimalist theme for hexo.">
+  <!-- 标签页图标 -->
+  
+
+  <!-- 图标库 -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+  <!-- 动画库 -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fushaolei/cdn-white@1.0/css/animate.css"/>
+  
+  <!-- css文件 -->
+  
+<link rel="stylesheet" href="/css/white.css">
+
+  <!-- 代码高亮 -->
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+
+<body>
+
+<div class="menu-outer">
+    <div class="menu-inner">
+      <div class="menu-site-name  animate__animated  animate__fadeInUp">
+        <a href="/">
+          white.
+        </a>
+        
+      </div>
+      <div class="menu-group">
+        <ul class="menu-ul">
+        
+          <a href="/" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              HOME
+            </li>
+          </a>
+        
+          <a href="/archives" class="nav-link">
+            <li class="menu-li  animate__animated  animate__fadeInUp">
+              BLOG
+            </li>
+          </a>
+        
+        
+        
+          <li class="menu-li animate__animated  animate__fadeInUp" id="mobile-menu">
+            <i class="ri-menu-line"></i>
+          </li>
+        
+        </ul>
+
+      </div>
+
+    </div>
+</div>
+<div id="mobile-main" class="animate__animated  animate__fadeIn">
+  <div class="mobile-menu-inner">
+    <div class="mobile-menu-site-name animate__animated  animate__fadeInUp">
+      <a href="/">
+        white.
+      </a>
+    </div>
+    <div class="mobile-menu-group" id="mobile-close">
+      <i class="ri-close-line"></i>
+    </div>
+
+  </div>
+
+  <div class="mobile-menu-div">
+  
+    <a href="/" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>HOME</span>
+      </div>
+    </a>
+  
+    <a href="/archives" class="mobile-nav-link">
+      <div class="mobile-menu-child animate__animated  animate__fadeInUp">
+        <span>BLOG</span>
+      </div>
+    </a>
+  
+  
+  </div>
+
+
+</div>
+
+<div class="body-outer">
+  <div class="body-inner">
+    
+<article class="post-inner">
+  <div class="post-content-outer">
+    <div class="post-intro">
+      <div class="post-title animate__animated  animate__fadeInUp">Windows下使用WSL(Linux子系统) + Visual Studio Code配置C/C++配置环境的教程</div>
+      <div class="meta-intro animate__animated  animate__fadeInUp">7月 01 2019</div>
+      
+    </div>
+    <div class="post-content-inner">
+      <div class="post-content-inner-space">
+
+      </div>
+      <div class="post-content-main animate__animated  animate__fadeInUp">
+        <!-- top型目录 -->
+        
+        <p>由于个人原因更换了新电脑，然后需要在新电脑上配置开发环境，于是使用了Visual Studio Code + WSL来配置简便的Linux C/C++开发环境</p>
+<a id="more"></a>
+<h1 id="安装Visual-Studio-Code"><a href="#安装Visual-Studio-Code" class="headerlink" title="安装Visual Studio Code"></a>安装Visual Studio Code</h1><p>这个过程非常简单，按照网上的教程一步步的进行即可。</p>
+<h1 id="Visual-Studio-Code安装必要插件"><a href="#Visual-Studio-Code安装必要插件" class="headerlink" title="Visual Studio Code安装必要插件"></a>Visual Studio Code安装必要插件</h1><p>强烈推荐Microsoft官方开发的C/C++插件。
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://s2.ax1x.com/2019/07/01/Z3Yyiq.png" >
+        </sapn>
+      </p>
+<h1 id="安装WSL-Linux子系统"><a href="#安装WSL-Linux子系统" class="headerlink" title="安装WSL(Linux子系统)"></a>安装WSL(Linux子系统)</h1><p>在Microsoft官方商店中搜索Linux，
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://s2.ax1x.com/2019/07/01/Z3tk6S.png" >
+        </sapn>
+      选择喜欢的系统类型进行下载即可。笔者选择的是Ubuntu，Microsoft商店中下载的Ubuntu默认是18.04版本。下载完成后可以通过开始菜单打开，跟着提示一路完成即可。</p>
+<h1 id="WSL安装必要的编译环境"><a href="#WSL安装必要的编译环境" class="headerlink" title="WSL安装必要的编译环境"></a>WSL安装必要的编译环境</h1><p>WSL默认只带了gcc编译器，因此想要配置C++编译环境的同学需要自行下载g++编译器以及gdb调试工具。关于这个可以查阅Microsoft官方文档，不再过多赘述。</p>
+<h1 id="Visual-Studio-Code配置"><a href="#Visual-Studio-Code配置" class="headerlink" title="Visual Studio Code配置"></a>Visual Studio Code配置</h1><p>Visual Studio Code在settings.json中配置wsl为默认shell。
+        <span class="lazyload-img-span">
+        <img   
+           data-src="https://s2.ax1x.com/2019/07/01/Z3tnkn.png" >
+        </sapn>
+      <br>接着配置C/C++插件，C/C++插件默认使用项目目录下的.vscode/c_cpp_properties.json文件作为配置文件。这里笔者只简单的使用了Microsoft官方提供的配置文件进行配置，文件如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;Win32&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;includePath&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;$&#123;workspaceFolder&#125;/**&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;defines&quot;</span>: [</span><br><span class="line">                <span class="string">&quot;_DEBUG&quot;</span>,</span><br><span class="line">                <span class="string">&quot;UNICODE&quot;</span>,</span><br><span class="line">                <span class="string">&quot;_UNICODE&quot;</span></span><br><span class="line">            ],</span><br><span class="line">            <span class="attr">&quot;compilerPath&quot;</span>: <span class="string">&quot;/usr/bin/g++&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cStandard&quot;</span>: <span class="string">&quot;c11&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;cppStandard&quot;</span>: <span class="string">&quot;c++17&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;intelliSenseMode&quot;</span>: <span class="string">&quot;gcc-x64&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;browse&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;path&quot;</span>: [</span><br><span class="line">                    <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span></span><br><span class="line">                ],</span><br><span class="line">                <span class="attr">&quot;limitSymbolsToIncludedHeaders&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">                <span class="attr">&quot;databaseFilename&quot;</span>: <span class="string">&quot;&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ],</span><br><span class="line">    <span class="attr">&quot;version&quot;</span>: <span class="number">4</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了能够在Visual Studio Code中直接使用快捷键快速构建项目，你可以配置.vscode/tasks.json文件配置一些自定义的task，这里贴出官方提供的配置文件：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">     <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,</span><br><span class="line">     <span class="attr">&quot;windows&quot;</span>: &#123;</span><br><span class="line">         <span class="attr">&quot;options&quot;</span>: &#123;</span><br><span class="line">             <span class="attr">&quot;shell&quot;</span>: &#123;</span><br><span class="line">                 <span class="attr">&quot;executable&quot;</span>: <span class="string">&quot;c:\\windows\\sysnative\\bash.exe&quot;</span>,</span><br><span class="line">                 <span class="attr">&quot;args&quot;</span>: [<span class="string">&quot;-c&quot;</span>]</span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;,</span><br><span class="line">     <span class="attr">&quot;tasks&quot;</span>: [</span><br><span class="line">         &#123;</span><br><span class="line">             <span class="attr">&quot;label&quot;</span>: <span class="string">&quot;build hello world on WSL&quot;</span>,</span><br><span class="line">             <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">             <span class="attr">&quot;command&quot;</span>: <span class="string">&quot;g++&quot;</span>,</span><br><span class="line">             <span class="attr">&quot;args&quot;</span>: [</span><br><span class="line">                 <span class="string">&quot;-g&quot;</span>,</span><br><span class="line">                 <span class="string">&quot;-o&quot;</span>,</span><br><span class="line">                 <span class="string">&quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/helloworld.out&quot;</span>,</span><br><span class="line">                 <span class="string">&quot;helloworld.cpp&quot;</span></span><br><span class="line">             ],</span><br><span class="line">             <span class="attr">&quot;group&quot;</span>: &#123;</span><br><span class="line">                 <span class="attr">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">                 <span class="attr">&quot;isDefault&quot;</span>: <span class="literal">true</span></span><br><span class="line">             &#125;</span><br><span class="line">         &#125;</span><br><span class="line">     ]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>具体文件中各配置项含义，参考Microsoft提供的官方文档，这里不再赘述。<br>为了方便的在Visual Studio Code中调试你的代码，你可以配置.vscode/launch.json，这里同样贴出Microsoft提供的官方示例：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="attr">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;(gdb) Launch&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;program&quot;</span>: <span class="string">&quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/helloworld.out&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;args&quot;</span>: [<span class="string">&quot;&quot;</span>],</span><br><span class="line">            <span class="attr">&quot;stopAtEntry&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">&quot;cwd&quot;</span>: <span class="string">&quot;/mnt/c/Users/&lt;your user name&gt;/Desktop/test/&quot;</span>,</span><br><span class="line">            <span class="attr">&quot;environment&quot;</span>: [],</span><br><span class="line">            <span class="attr">&quot;externalConsole&quot;</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">&quot;windows&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;/usr/bin/gdb&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;Enable pretty-printing for gdb&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                        <span class="attr">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;pipeTransport&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;pipeCwd&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;pipeProgram&quot;</span>: <span class="string">&quot;c:\\windows\\sysnative\\bash.exe&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;pipeArgs&quot;</span>: [<span class="string">&quot;-c&quot;</span>],</span><br><span class="line">                <span class="attr">&quot;debuggerPath&quot;</span>: <span class="string">&quot;/usr/bin/gdb&quot;</span></span><br><span class="line">            &#125;,</span><br><span class="line">            <span class="attr">&quot;sourceFileMap&quot;</span>: &#123;</span><br><span class="line">                <span class="attr">&quot;/mnt/c&quot;</span>: <span class="string">&quot;$&#123;env:systemdrive&#125;/&quot;</span>,</span><br><span class="line">                <span class="attr">&quot;/usr&quot;</span>: <span class="string">&quot;C:\\Users\\...\\usr\\&quot;</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>不明之处自行查阅官方文档。</p>
+
+        <!-- 分类文章 -->
+        
+      </div>
+      <div class="post-content-inner-space">
+        
+          <div class="space-toc-main animate__animated  animate__fadeInUp">
+            
+           </div>
+        
+      </div>
+   </div>
+    <!-- 评论 -->
+    
+  </div>
+</article>
+  </div>
+</div>
+
+
+
+<!-- 如果是home模式的话，不在首页就显示footer，如果不是home模式的话 所有都显示footer -->
+
+  <div class="footer-outer animate__animated  animate__fadeInUp">
+    <div class="footer-inner">
+    <div class="footer-text">
+    <p>Power by <a target="_blank" rel="noopener" href="http://hexo.io/">Hexo</a> Theme by <a target="_blank" rel="noopener" href="https://github.com/FuShaoLei/hexo-theme-white">White</a></p>
+
+    </div>
+    <div class="footer-contact">
+    <ul class="footer-ul">
+        
+        <li class="footer-li">
+            <a href="https://github.com/FuShaoLei/hexo-theme-white" target="_blank">
+                <i class="ri-github-line"></i>
+            </a>
+        </li>
+        
+        <li class="footer-li">
+            <a href="mailto:1563250958@qq.com" target="_blank">
+                <i class="ri-mail-line"></i>
+            </a>
+        </li>
+        
+    </ul>
+    </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script src="/js/white.js"></script>
+
+
+
+</body>
+</html>
