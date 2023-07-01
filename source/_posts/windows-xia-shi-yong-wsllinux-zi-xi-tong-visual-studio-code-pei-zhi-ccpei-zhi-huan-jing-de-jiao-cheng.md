@@ -124,4 +124,4 @@ Visual Studio Code在settings.json中配置wsl为默认shell。![Visual Studio C
     ]
 }
 ```
-不明之处参考官方文档。
+不明之处自行查阅官方文档。
