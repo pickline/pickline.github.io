@@ -474,6 +474,11 @@
   "resolved" "https://registry.npmjs.org/ee-first/-/ee-first-1.1.1.tgz"
   "version" "1.1.1"
 
+"ejs@^1.0.0":
+  "integrity" "sha512-hK3tEqj0pP7UF5UHKNiRvm3zCaYk7UI4EBJ6wwN5O2qX1WdSovmqvUHEbNOJuglXzVkk/H0r7vgst3mVcQXrPA=="
+  "resolved" "https://registry.npmjs.org/ejs/-/ejs-1.0.0.tgz"
+  "version" "1.0.0"
+
 "ejs@^3.1.6":
   "integrity" "sha512-rC+QVNMJWv+MtPgkt0y+0rVEIdbtxVADApW9JXrUVlzHetgcyczP/E7DJmWJ4fJCZF2cPcBk0laWO9ZHMG3DmQ=="
   "resolved" "https://registry.npmjs.org/ejs/-/ejs-3.1.9.tgz"
@@ -748,6 +753,13 @@
     "hexo-util" "^3.0.1"
     "jsdom" "^20.0.1"
     "marked" "^4.3.0"
+
+"hexo-renderer-mathjax@^0.6.0":
+  "integrity" "sha512-S6bWVzBBp1cuMUOqjqnQgMspwpS05slrWZ1gqIbi7OF3spBEOpGa26hC7j7dP55oNCDmcbK7PE+i/l3Q6qRYoQ=="
+  "resolved" "https://registry.npmjs.org/hexo-renderer-mathjax/-/hexo-renderer-mathjax-0.6.0.tgz"
+  "version" "0.6.0"
+  dependencies:
+    "ejs" "^1.0.0"
 
 "hexo-renderer-stylus@^2.1.0":
   "integrity" "sha512-Nef4YCr7JX8jaRaByhzXMSsWnDed+RgJj6aU/ARnYu3Bn5xz/qRz52VJG7KqD0Xuysxa9TIBdVUgNzBrSFn3DQ=="
